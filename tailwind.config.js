@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'overlay': 'rgb(0,0,0,0.8)',
+        'overlay': 'rgb(0,0,0,0.6)',
       }
     },
     container: {
