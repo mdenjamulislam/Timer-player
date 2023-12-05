@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="../output/style.css">
 </head>
 <body> 
-    <div class="bg-[url('./images/bg.png')] bg-cover bg-center">
+    <div class="bg-[url('./images/bg.png')] bg-cover bg-center" data-theme="dark">
         <div class="w-full h-screen flex justify-center items-center px-4 bg-overlay">
             <!-- Stop watch / Timer -->
             <div>
-                <div class="radial-progress text-4xl font-bold" style="--value:100; --size:12rem; --thickness: 5px;" role="progressbar">
-                    <span id="count">10</span>
+                <div class="w-52 h-52 flex justify-center items-center rounded-full border-4 border-slate-700">
+                    <span id="count" class="text-4xl font-bold">5</span>
+                    <!-- Audio -->
+                    <audio id="lofi" class="hidden" controls>
+                        <source src="../output/media/audio.mp3" type="audio/mp3">
+                    </audio>
                 </div>
                 <div class="flex gap-10 justify-between">
                     <!-- <label class="swap">
@@ -40,19 +44,48 @@
         const play = document.getElementById('play');
         const stop = document.getElementById('stop');
         const countNumber = document.getElementById('count');
+        const audioLofi = document.getElementById('lofi');
 
-        let count = 10;
+        let count = parseInt(countNumber.innerText);
         let timer;
 
         play.addEventListener('click', () => {
-            timer = setInterval(() => {
-                count--;
-                countNumber.innerText = count;
-                if(count == 0) {
-                    clearInterval(timer);
-                }
-            }, 1000);
+            if (play.classList.contains('playing')) {
+                play.innerHTML = `
+                    <i class="fa-solid fa-play text-2xl"></i>
+                    <p>Play</p>
+                `;
+                clearInterval(timer);
+            } else {
+                play.innerHTML = `
+                    <i class="fa-solid fa-pause text-2xl"></i>
+                    <p>Pause</p>
+                `;
+                timer = setInterval(() => {
+                    count--;
+                    countNumber.innerText = count;
+                    if (count == 0) {
+                        clearInterval(timer);
+                        if(count == 0) {
+                            audioLofi.play();
+                        }
+                    }
+                }, 1000);
+            }
+            play.classList.toggle('playing');
         });
+
+        stop.addEventListener('click', () => {
+            clearInterval(timer);
+            count = 10;
+            countNumber.innerText = count;
+            play.innerHTML = `
+                <i class="fa-solid fa-play text-2xl"></i>
+                <p>Play</p>
+            `;
+            play.classList.remove('playing');
+            audioLofi.pause();
+        })
     </script>
 </body>
 </html>
