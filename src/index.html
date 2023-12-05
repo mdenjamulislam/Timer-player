@@ -14,18 +14,20 @@
         <div class="w-full h-screen flex justify-center items-center px-4 bg-overlay">
             <!-- Stop watch / Timer -->
             <div>
-                <div class="radial-progress" style="--value:70; --size:12rem; --thickness: 5px;" role="progressbar">7</div>
+                <div class="radial-progress text-4xl font-bold" style="--value:100; --size:12rem; --thickness: 5px;" role="progressbar">
+                    <span id="count">10</span>
+                </div>
                 <div class="flex gap-10 justify-between">
-                    <label class="swap">
-                        <!-- this hidden checkbox controls the state -->
+                    <!-- <label class="swap">
                         <input type="checkbox" />
-                        
-                        <!-- volume on icon -->
                         <i class="swap-on fill-current fa-solid fa-pause text-2xl"></i> 
-                        <!-- volume off icon -->
                         <i class="swap-off fill-current fa-solid fa-play text-2xl"></i>
-                    </label>
-                    <button class="">
+                    </label> -->
+                    <button id="play">
+                        <i class="fa-solid fa-play text-2xl"></i>
+                        <p>Play</p>
+                    </button>
+                    <button id="stop">
                         <i class="fa-solid fa-stop text-2xl"></i>
                         <p>Stop</p>
                     </button>
@@ -33,5 +35,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const play = document.getElementById('play');
+        const stop = document.getElementById('stop');
+        const countNumber = document.getElementById('count');
+
+        let count = 10;
+        let timer;
+
+        play.addEventListener('click', () => {
+            timer = setInterval(() => {
+                count--;
+                countNumber.innerText = count;
+                if(count == 0) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
