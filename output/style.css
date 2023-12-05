@@ -1245,6 +1245,10 @@ html {
   display: none;
 }
 
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
 .h-52 {
   height: 13rem;
 }
@@ -1291,11 +1295,11 @@ html {
 }
 
 .bg-overlay {
-  background-color: rgb(0,0,0,0.9);
+  background-color: rgb(0,0,0,0.8);
 }
 
-.bg-\[url\(\'\.\/images\/bg\.png\'\)\] {
-  background-image: url('./images/bg.png');
+.bg-\[url\(\'\.\/images\/bg\.jpg\'\)\] {
+  background-image: url('./images/bg.jpg');
 }
 
 .bg-cover {
