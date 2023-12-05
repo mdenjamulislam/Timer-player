@@ -2,10 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'overlay': 'rgb(0,0,0,0.9)',
+      }
+    },
     container: {
       center: true,
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }

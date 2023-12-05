@@ -3,17 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Timer Player</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="../output/style.css">
 </head>
 <body> 
-    <div class="w-full h-screen flex justify-center items-center px-4 bg-slate-950">
-        <!-- Stop watch / Timer -->
-        <div>
-            <div class="radial-progress" style="--value:70; --size:12rem; --thickness: 2px;" role="progressbar">70%</div>
+    <div class="bg-[url('./images/bg.png')] bg-cover bg-center">
+        <div class="w-full h-screen flex justify-center items-center px-4 bg-overlay">
+            <!-- Stop watch / Timer -->
+            <div>
+                <div class="radial-progress" style="--value:70; --size:12rem; --thickness: 5px;" role="progressbar">7</div>
+                <div class="flex gap-10 justify-between">
+                    <label class="swap">
+                        <!-- this hidden checkbox controls the state -->
+                        <input type="checkbox" />
+                        
+                        <!-- volume on icon -->
+                        <i class="swap-on fill-current fa-solid fa-pause text-2xl"></i> 
+                        <!-- volume off icon -->
+                        <i class="swap-off fill-current fa-solid fa-play text-2xl"></i>
+                    </label>
+                    <button class="">
+                        <i class="fa-solid fa-stop text-2xl"></i>
+                        <p>Stop</p>
+                    </button>
+                </div>
+            </div>
         </div>
-        
     </div>
 </body>
 </html>
